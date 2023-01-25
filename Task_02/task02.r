@@ -81,8 +81,8 @@ head(Data2)
 Mass <- which(Data2[,9]== 'trait_mass')
 cyrusMass <- Data2[Mass,]
 head(cyrusMass)
-Mass <- which(Data2[,'event']== 'trait_mass')
-Mass <- which(Data2$event=='trait_mass')
+cMass <- which(Data2[,'event']== 'trait_mass')
+cMass <- which(Data2$event=='trait_mass')
 dayID <- apply(Data2, 1, function(x) paste(x[1:3], collapse='-'))
 dateID <- sapply(dayID, as.Date, format = "%Y-%m-%d", origin="2022-04-12")
 Data2$age <- dateID - dateID[which(Data2$event=='birth')]
@@ -120,3 +120,20 @@ title("Beren and Cyrus Age vs Mass")
 legend(1000, 6, legend=c("Beren", "Cyrus"), col=c("green","purple"), lty=2:2, cex=0.8, title="Children", text.font=4)
 dev.off()
 
+#Extra Credit
+unique(cyrus3$event)
+which(cyrus3$event == 'trait_mass')
+cMass <- which(cyrus3$event == 'trait_mass')
+avgcMass <-mean(cyrus3$value[cMass])
+avgGrowth <- tapply(cyrus3$value[cMass], cyrus3$age[cMass], mean)
+varGrowth <- tapply(cyrus3$value[cMass], cyrus3$age[cMass], var)
+totalGrowth <- tapply(cyrus3$value[cMass], cyrus3$age[cMass],sum)
+numGrowth <- tapply(cyrus3$value[cMass], cyrus3$age[cMass], length)
+cor(cyrus3$value[cMass], cyrus3$age[cMass])
+cor.test(cyrus3$value[cMass], cyrus3$age[cMass])
+cyrusreg <- lm(cyrus3$value[Mass] ~ cyrus3$age[Mass])
+summary(cyrusreg)
+attributes(cyrusreg)
+plot(cyrus3$value[cMass]/1000 ~ cyrus3$age[Mass], col='pink', pch=16, xlab="Age (days)", ylab="Mass (kg)", ylim=c(0,15))
+
+#I predict Cyrus will weigh 
