@@ -1,4 +1,9 @@
 setwd('~/Desktop/Evolution/Tasks/Task_05')
+install.packages(learnPopGen)
+library(learnPopGen)
+coalescent.plot()
+coalescent.plot()
+coalescent.plot()
 library(adegenet)
 library(poppr)
 library(dplyr)
@@ -68,4 +73,8 @@ ggplot(data = fst.df, aes(x=Site1, y=Site2, fill=Fst))+
         legend.title = element_text(size=14, face = "bold"),
         legend.text = element_text(size=10)
         )
+dev.off
 
+#Extra Credit
+install.packages(coala)
+library(coala)
