@@ -29,7 +29,7 @@ inspect(opinions.tdm[1:10,])
 
 #TXT
 my_data <- read.table("~/Desktop/Evolution/Tasks/Project/Saimaa_ringed_seal_microsat.gen", header=TRUE, sep=" ")
-
+head(my_data)
 
 ?read.genepop
 #Hypothesis
