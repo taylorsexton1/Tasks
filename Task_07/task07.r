@@ -62,3 +62,9 @@ for(i in 1:nrow(fossilData)) {
   names(fossilNodes)<-nodeN
 }
 Ancestors_withFossils <- fastAnc(AnolisTree, svl, anc.states=fossilNodes, CI=TRUE, var=TRUE)
+
+
+
+
+
+

@@ -10,21 +10,20 @@ squirrel_data2 <- read_excel("~/Desktop/Evolution/Tasks/Project/Relationships in
 library("ggplot2")
 summary(squirrel_data)
 str(squirrel_data)
-ggplot(squirrel_data, aes(Species,CS), xlab="Species", ylab="Centroid Size")+
+ggplot(squirrel_data, aes(Species,CS))+
   geom_point()+
   ggtitle("Mandibular Centroid Sizes of Different Squirrel Species")+
   labs(y="Centroid Size", x="Species")
+
 #Phylogram
-
-
-
+#taxon names: A2-A1678	 CS: B2-B1678
 
 
 #Statistical Test **Is there a significant difference between the genera
 kruskal.test(CS~Species, data=squirrel_data)
 
 #Kruskal-Wallis Rank Sum Test
-  # chi-squared=1655.5
+  #chi-squared=1655.5
   #df= 183
   #p-value <2.2e-16 = 0.00000000000000022
 #Since the p-value is less than 0.5, there is a significant difference in the centroid sizes between the species of squirrels.
