@@ -5,7 +5,7 @@ read_excel("/Users/taylorsexton/Desktop/Evolution/Tasks/Project/Relationships in
 my_data <- read_excel("/Users/taylorsexton/Desktop/Evolution/Tasks/Project/Relationships in Squirrels/SizeAndShapeData.xlsx")
 squirrel_data <- read_excel("~/Desktop/Evolution/Tasks/Project/Relationships in Squirrels/WholeSquirrelData.xlsx")
 squirrel_data2 <- read_excel("~/Desktop/Evolution/Tasks/Project/Relationships in Squirrels/SquirrelData.xlsx")
-
+location_data <- read_excel("~/Desktop/Evolution/Tasks/Project/Relationships in Squirrels/LocationData.xlsx")
 #Graph
 library("ggplot2")
 summary(squirrel_data)
@@ -14,9 +14,11 @@ ggplot(squirrel_data, aes(Species,CS))+
   geom_point()+
   ggtitle("Mandibular Centroid Sizes of Different Squirrel Species")+
   labs(y="Centroid Size", x="Species")
-
 #Phylogram
-#taxon names: A2-A1678	 CS: B2-B1678
+
+
+
+
 
 
 #Statistical Test **Is there a significant difference between the genera
