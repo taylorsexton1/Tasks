@@ -14,6 +14,8 @@ ggplot(squirrel_data, aes(Species,CS))+
   geom_point()+
   ggtitle("Mandibular Centroid Sizes of Different Squirrel Species")+
   labs(y="Centroid Size", x="Species")
+barplot(squirrel_data2, main="Average Mandibular Sizes of Different Squirrel Species", ylab="Average Centroid Size", x=lab="Species", las=2)
+
 #Phylogram
 
 
@@ -28,7 +30,7 @@ kruskal.test(CS~Species, data=squirrel_data)
   #chi-squared=1655.5
   #df= 183
   #p-value <2.2e-16 = 0.00000000000000022
-#Since the p-value is less than 0.5, there is a significant difference in the centroid sizes between the species of squirrels.
+#Since the p-value is less than 0.05, there is a significant difference in the centroid sizes between the species of squirrels.
 
 #Hypothesis
 #There is a significant difference between genera in the mandibular centroid size in the squirrels. 
