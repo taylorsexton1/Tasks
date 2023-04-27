@@ -16,12 +16,26 @@ ggplot(squirrel_data, aes(Species,CS))+
   labs(y="Centroid Size", x="Species")
 barplot(squirrel_data2, main="Average Mandibular Sizes of Different Squirrel Species", ylab="Average Centroid Size", x=lab="Species", las=2)
 
-#Phylogram
+#Dunn Test
+library(readr)
+install.packages("dunn.test")
+library(dunn.test)
+dunn.test(x= squirrel_data$CS, g= squirrel_data$Species)
+
+data.frame(Species = squirrel_data$Species, CS = squirrel_data$CS)
+dunn_results <- dunn.test(x = squirrel_data$CS, g = squirrel_data$Species, method ="bonferroni")
+print(dunn_results)
 
 
-
-
-
+pairs_df <- as.data.frame(pairs)
+pairs
+colnames(pairs_df) <- c("Species", "CS", "Adjusted p-value")
+pairs_df
+library(dplyr)
+pairs <- dunn_results$results[, 1:2]
+pairs$'Adjusted p-value' <- dunn_results$adjusted.p
+colnames(pairs) <- c("Species", "CS", "Adjusted p-value")
+pairs
 
 #Statistical Test **Is there a significant difference between the genera
 kruskal.test(CS~Species, data=squirrel_data)
@@ -31,6 +45,7 @@ kruskal.test(CS~Species, data=squirrel_data)
   #df= 183
   #p-value <2.2e-16 = 0.00000000000000022
 #Since the p-value is less than 0.05, there is a significant difference in the centroid sizes between the species of squirrels.
+
 
 #Hypothesis
 #There is a significant difference between genera in the mandibular centroid size in the squirrels. 
